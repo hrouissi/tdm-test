@@ -25,7 +25,7 @@ class CrmLead(models.Model):
     
     lead_product_ids = fields.One2many('crm.lead.product','lead_id',string='Products For Quotation')
 
-    @api.multi
+
     def action_create_quotation(self):
         sale_obj=self.env['sale.order']
         sale_line_obj=self.env['sale.order.line']
