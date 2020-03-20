@@ -1,0 +1,4 @@
+[submodule "tarikMch/crm"]
+	path = tarikMch/crm
+	url = git@github.com:tarikMch/crm.git
+	branch = master
