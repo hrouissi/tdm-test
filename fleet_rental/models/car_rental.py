@@ -132,17 +132,18 @@ class CarRentalContract(models.Model):
             raise Warning("Please select the valid end date.")
 
     def set_to_done(self):
-        invoice_ids = self.env['account.move'].search([('invoice_origin', '=', self.name)])
-        print("self.name",self.name)
-        f = 0
-        for each in invoice_ids:
-            if each.invoice_payment_state != 'paid':
-                f = 1
-                break
-        if f == 0:
-            self.state = 'done'
-        else:
-            raise UserError("Some Invoices are pending")
+        self.state = 'done
+##        invoice_ids = self.env['account.move'].search([('invoice_origin', '=', self.name)])
+##        print("self.name",self.name)
+##        f = 0
+##        for each in invoice_ids:
+##            if each.invoice_payment_state != 'paid':
+##                f = 1
+##                break
+##        if f == 0:
+##            self.state = 'done'
+##        else:
+##            raise UserError("Some Invoices are pending")
 
     def _invoice_count(self):
         invoice_ids = self.env['account.move'].search([('invoice_origin', '=', self.name)])
@@ -176,77 +177,77 @@ class CarRentalContract(models.Model):
 
     def fleet_scheduler1(self, rent_date):
         inv_obj = self.env['account.move']
-        inv_line_obj = self.env['account.move.line']
+##        inv_line_obj = self.env['account.move.line']
         recurring_obj = self.env['fleet.rental.line']
         start_date = datetime.strptime(self.rent_start_date, '%Y-%m-%d').date()
         end_date = datetime.strptime(self.rent_end_date, '%Y-%m-%d').date()
         supplier = self.customer_id
         inv_data = {
-            'name': supplier.name,
-            'ref': supplier.name,
-            # 'account_id': supplier.property_account_payable_id.id,
-            'partner_id': supplier.id,
-            # 'currency_id': self.account_type.company_id.currency_id.id,
-            # 'journal_id': self.journal_type.id,
-            'invoice_origin': self.name,
-            # 'company_id': self.account_type.company_id.id,
-            'invoice_date_due': self.rent_end_date,
-        }
-        inv_id = inv_obj.create(inv_data)
-        product_id = self.env['product.product'].search([("name", "=", "Fleet Rental Service")])
-        if product_id.property_account_income_id.id:
-            income_account = product_id.property_account_income_id
-        elif product_id.categ_id.property_account_income_categ_id.id:
-            income_account = product_id.categ_id.property_account_income_categ_id
-        else:
-            raise UserError(
-                _('Please define income account for this product: "%s" (id:%d).') % (product_id.name,
-                                                                                     product_id.id))
+##            'name': supplier.name,
+##            'ref': supplier.name,
+##            # 'account_id': supplier.property_account_payable_id.id,
+##            'partner_id': supplier.id,
+##            # 'currency_id': self.account_type.company_id.currency_id.id,
+##            # 'journal_id': self.journal_type.id,
+##            'invoice_origin': self.name,
+##            # 'company_id': self.account_type.company_id.id,
+##            'invoice_date_due': self.rent_end_date,
+##        }
+##        inv_id = inv_obj.create(inv_data)
+##        product_id = self.env['product.product'].search([("name", "=", "Fleet Rental Service")])
+##        if product_id.property_account_income_id.id:
+##            income_account = product_id.property_account_income_id
+##        elif product_id.categ_id.property_account_income_categ_id.id:
+##            income_account = product_id.categ_id.property_account_income_categ_id
+##        else:
+##            raise UserError(
+##                _('Please define income account for this product: "%s" (id:%d).') % (product_id.name,
+##                                                                                     product_id.id))
         recurring_data = {
             'name': self.vehicle_id.name,
             'date_today': rent_date,
             'account_info': income_account.name,
             'rental_number': self.id,
-            'recurring_amount': self.cost_generated,
-            'invoice_number': inv_id.id,
-            'invoice_ref': inv_id.id,
+##            'recurring_amount': self.cost_generated,
+##            'invoice_number': inv_id.id,
+##            'invoice_ref': inv_id.id,
         }
         recurring_obj.create(recurring_data)
-        inv_line_data = {
-            'name': self.vehicle_id.name,
-            'account_id': income_account.id,
-            'price_unit': self.cost_generated,
-            'quantity': 1,
-            'product_id': product_id.id,
-            'move_id': inv_id.id,
-        }
-        inv_line_obj.update(inv_line_data)
-        mail_content = _(
-            '<h3>Reminder Recurrent Payment!</h3><br/>Hi %s, <br/> This is to remind you that the '
-            'recurrent payment for the '
-            'rental contract has to be done.'
-            'Please make the payment at the earliest.'
-            '<br/><br/>'
-            'Please find the details below:<br/><br/>'
-            '<table><tr><td>Contract Ref<td/><td> %s<td/><tr/>'
-            '<tr/><tr><td>Amount <td/><td> %s<td/><tr/>'
-            '<tr/><tr><td>Due Date <td/><td> %s<td/><tr/>'
-            '<tr/><tr><td>Responsible Person <td/><td> %s, %s<td/><tr/><table/>') % \
-                       (self.customer_id.name, self.name, inv_id.amount_total, inv_id.invoice_date_due,
-                        inv_id.user_id.name,
-                        inv_id.user_id.mobile)
-        main_content = {
-            'subject': "Reminder Recurrent Payment!",
-            'author_id': self.env.user.partner_id.id,
-            'body_html': mail_content,
-            'email_to': self.customer_id.email,
-        }
-        self.env['mail.mail'].create(main_content).send()
+##        inv_line_data = {
+##            'name': self.vehicle_id.name,
+##            'account_id': income_account.id,
+##            'price_unit': self.cost_generated,
+##            'quantity': 1,
+##            'product_id': product_id.id,
+##            'move_id': inv_id.id,
+##        }
+##        inv_line_obj.update(inv_line_data)
+##        mail_content = _(
+##            '<h3>Reminder Recurrent Payment!</h3><br/>Hi %s, <br/> This is to remind you that the '
+##            'recurrent payment for the '
+##            'rental contract has to be done.'
+##            'Please make the payment at the earliest.'
+##            '<br/><br/>'
+##            'Please find the details below:<br/><br/>'
+##            '<table><tr><td>Contract Ref<td/><td> %s<td/><tr/>'
+##            '<tr/><tr><td>Amount <td/><td> %s<td/><tr/>'
+##            '<tr/><tr><td>Due Date <td/><td> %s<td/><tr/>'
+##            '<tr/><tr><td>Responsible Person <td/><td> %s, %s<td/><tr/><table/>') % \
+##                       (self.customer_id.name, self.name, inv_id.amount_total, inv_id.invoice_date_due,
+##                        inv_id.user_id.name,
+##                        inv_id.user_id.mobile)
+##        main_content = {
+##            'subject': "Reminder Test Drive Payment!",
+##            'author_id': self.env.user.partner_id.id,
+##            'body_html': mail_content,
+##            'email_to': self.customer_id.email,
+##        }
+##        self.env['mail.mail'].create(main_content).send()
 
     @api.model
     def fleet_scheduler(self):
-        inv_obj = self.env['account.move']
-        inv_line_obj = self.env['account.move.line']
+##        inv_obj = self.env['account.move']
+##        inv_line_obj = self.env['account.move.line']
         recurring_obj = self.env['fleet.rental.line']
         today = date.today()
         for records in self.search([]):
@@ -281,128 +282,128 @@ class CarRentalContract(models.Model):
                         'invoice_date_due': self.rent_end_date,
                     }
                     inv_id = inv_obj.create(inv_data)
-                    product_id = self.env['product.product'].search([("name", "=", "Fleet Rental Service")])
-                    if product_id.property_account_income_id.id:
-                        income_account = product_id.property_account_income_id
-                    elif product_id.categ_id.property_account_income_categ_id.id:
-                        income_account = product_id.categ_id.property_account_income_categ_id
-                    else:
-                        raise UserError(
-                            _('Please define income account for this product: "%s" (id:%d).') % (product_id.name,
-                                                                                                 product_id.id))
+##                    product_id = self.env['product.product'].search([("name", "=", "Fleet Rental Service")])
+##                    if product_id.property_account_income_id.id:
+##                        income_account = product_id.property_account_income_id
+##                    elif product_id.categ_id.property_account_income_categ_id.id:
+##                        income_account = product_id.categ_id.property_account_income_categ_id
+##                    else:
+##                        raise UserError(
+##                            _('Please define income account for this product: "%s" (id:%d).') % (product_id.name,
+##                                                                                                 product_id.id))
                     recurring_data = {
                         'name': records.vehicle_id.name,
                         'date_today': today,
-                        'account_info': income_account.name,
-                        'rental_number': records.id,
-                        'recurring_amount': records.cost_generated,
-                        'invoice_number': inv_id.id,
-                        'invoice_ref': inv_id.id,
+##                        'account_info': income_account.name,
+##                        'rental_number': records.id,
+##                        'recurring_amount': records.cost_generated,
+##                        'invoice_number': inv_id.id,
+##                        'invoice_ref': inv_id.id,
                     }
                     recurring_obj.create(recurring_data)
-                    inv_line_data = {
-                        'name': records.vehicle_id.name,
-                        'account_id': income_account.id,
-                        'price_unit': records.cost_generated,
-                        'quantity': 1,
-                        'product_id': product_id.id,
-                        'move_id': inv_id.id,
-
-                    }
-                    inv_line_obj.update(inv_line_data)
-                    mail_content = _(
-                        '<h3>Reminder Recurrent Payment!</h3><br/>Hi %s, <br/> This is to remind you that the '
-                        'recurrent payment for the '
-                        'rental contract has to be done.'
-                        'Please make the payment at the earliest.'
-                        '<br/><br/>'
-                        'Please find the details below:<br/><br/>'
-                        '<table><tr><td>Contract Ref<td/><td> %s<td/><tr/>'
-                        '<tr/><tr><td>Amount <td/><td> %s<td/><tr/>'
-                        '<tr/><tr><td>Due Date <td/><td> %s<td/><tr/>'
-                        '<tr/><tr><td>Responsible Person <td/><td> %s, %s<td/><tr/><table/>') % \
-                                   (self.customer_id.name, self.name, inv_id.amount_total, inv_id.invoice_date_due,
-                                    inv_id.user_id.name,
-                                    inv_id.user_id.mobile)
-                    main_content = {
-                        'subject': "Reminder Recurrent Payment!",
-                        'author_id': self.env.user.partner_id.id,
-                        'body_html': mail_content,
-                        'email_to': self.customer_id.email,
-                    }
-                    self.env['mail.mail'].create(main_content).send()
+##                    inv_line_data = {
+##                        'name': records.vehicle_id.name,
+##                        'account_id': income_account.id,
+##                        'price_unit': records.cost_generated,
+##                        'quantity': 1,
+##                        'product_id': product_id.id,
+##                        'move_id': inv_id.id,
+##
+##                    }
+##                    inv_line_obj.update(inv_line_data)
+##                    mail_content = _(
+##                        '<h3>Reminder Recurrent Payment!</h3><br/>Hi %s, <br/> This is to remind you that the '
+##                        'recurrent payment for the '
+##                        'rental contract has to be done.'
+##                        'Please make the payment at the earliest.'
+##                        '<br/><br/>'
+##                        'Please find the details below:<br/><br/>'
+##                        '<table><tr><td>Contract Ref<td/><td> %s<td/><tr/>'
+##                        '<tr/><tr><td>Amount <td/><td> %s<td/><tr/>'
+##                        '<tr/><tr><td>Due Date <td/><td> %s<td/><tr/>'
+##                        '<tr/><tr><td>Responsible Person <td/><td> %s, %s<td/><tr/><table/>') % \
+##                                   (self.customer_id.name, self.name, inv_id.amount_total, inv_id.invoice_date_due,
+##                                    inv_id.user_id.name,
+##                                    inv_id.user_id.mobile)
+##                    main_content = {
+##                        'subject': "Reminder Recurrent Payment!",
+##                        'author_id': self.env.user.partner_id.id,
+##                        'body_html': mail_content,
+##                        'email_to': self.customer_id.email,
+##                    }
+##                    self.env['mail.mail'].create(main_content).send()
             else:
                 if self.state == 'running':
                     records.state = "checking"
 
     def action_verify(self):
-        self.state = "invoice"
+##        self.state = "invoice"
         self.reserved_fleet_id.unlink()
         self.rent_end_date = fields.Date.today()
-        if self.total_cost != 0:
-            inv_obj = self.env['account.move']
-            inv_line_obj = self.env['account.move.line']
-            supplier = self.customer_id
-            inv_data = {
-                'name': supplier.name,
-                'ref': supplier.name,
-                # 'account_id': supplier.property_account_payable_id.id,
-                'partner_id': supplier.id,
-                'currency_id': self.account_type.company_id.currency_id.id,
-                'journal_id': self.journal_type.id,
-                'invoice_origin': self.name,
-                'company_id': self.account_type.company_id.id,
-                'invoice_date_due': self.rent_end_date,
-            }
-            inv_id = inv_obj.create(inv_data)
-            product_id = self.env['product.product'].search([("name", "=", "Fleet Rental Service")])
-            if product_id.property_account_income_id.id:
-                income_account = product_id.property_account_income_id
-            elif product_id.categ_id.property_account_income_categ_id.id:
-                income_account = product_id.categ_id.property_account_income_categ_id
-            else:
-                raise UserError(
-                    _('Please define income account for this product: "%s" (id:%d).') % (product_id.name,
-                                                                                         product_id.id))
-            inv_line_data = {
-                'name': "Damage/Tools missing cost",
-                'account_id': income_account.id,
-                'price_unit': self.total_cost,
-                'quantity': 1,
-                'product_id': product_id.id,
-                'move_id': inv_id.id,
-            }
-            inv_line_obj.update(inv_line_data)
-            imd = self.env['ir.model.data']
-            action = imd.xmlid_to_object('account.view_move_tree')
-            list_view_id = self.env.ref('account.view_move_form', False)
-            form_view_id = self.env.ref('account.view_move_tree', False)
-            result = {
-                'domain': "[('id', '=', " + str(inv_id) + ")]",
-                'name': 'Fleet Rental Invoices',
-                'view_mode': 'form',
-                'res_model': 'account.move',
-                'type': 'ir.actions.act_window',
-                'views': [(list_view_id.id, 'tree'), (form_view_id.id, 'form')],
-            }
-            # result = {
-            #     # 'name': action.name,
-            #     'help': action.help,
-            #     'type': 'ir.actions.act_window',
-            #     'views': [[list_view_id, 'tree'], [form_view_id, 'form'], [False, 'graph'], [False, 'kanban'],
-            #               [False, 'calendar'], [False, 'pivot']],
-            #     'target': action.target,
-            #     'context': action.context,
-            #     'res_model': 'account.move',
-            # }
-            if len(inv_id) > 1:
-                result['domain'] = "[('id','in',%s)]" % inv_id.ids
-            elif len(inv_id) == 1:
-                result['views'] = [(form_view_id, 'form')]
-                result['res_id'] = inv_id.ids[0]
-            else:
-                result = {'type': 'ir.actions.act_window_close'}
-            return result
+##        if self.total_cost != 0:
+##            inv_obj = self.env['account.move']
+##            inv_line_obj = self.env['account.move.line']
+##            supplier = self.customer_id
+##            inv_data = {
+##                'name': supplier.name,
+##                'ref': supplier.name,
+##                # 'account_id': supplier.property_account_payable_id.id,
+##                'partner_id': supplier.id,
+##                'currency_id': self.account_type.company_id.currency_id.id,
+##                'journal_id': self.journal_type.id,
+##                'invoice_origin': self.name,
+##                'company_id': self.account_type.company_id.id,
+##                'invoice_date_due': self.rent_end_date,
+##            }
+##            inv_id = inv_obj.create(inv_data)
+##            product_id = self.env['product.product'].search([("name", "=", "Fleet Rental Service")])
+##            if product_id.property_account_income_id.id:
+##                income_account = product_id.property_account_income_id
+##            elif product_id.categ_id.property_account_income_categ_id.id:
+##                income_account = product_id.categ_id.property_account_income_categ_id
+##            else:
+##                raise UserError(
+##                    _('Please define income account for this product: "%s" (id:%d).') % (product_id.name,
+##                                                                                         product_id.id))
+##            inv_line_data = {
+##                'name': "Damage/Tools missing cost",
+##                'account_id': income_account.id,
+##                'price_unit': self.total_cost,
+##                'quantity': 1,
+##                'product_id': product_id.id,
+##                'move_id': inv_id.id,
+##            }
+##            inv_line_obj.update(inv_line_data)
+##            imd = self.env['ir.model.data']
+##            action = imd.xmlid_to_object('account.view_move_tree')
+##            list_view_id = self.env.ref('account.view_move_form', False)
+##            form_view_id = self.env.ref('account.view_move_tree', False)
+##            result = {
+##                'domain': "[('id', '=', " + str(inv_id) + ")]",
+##                'name': 'Fleet Rental Invoices',
+##                'view_mode': 'form',
+##                'res_model': 'account.move',
+##                'type': 'ir.actions.act_window',
+##                'views': [(list_view_id.id, 'tree'), (form_view_id.id, 'form')],
+##            }
+##            # result = {
+##            #     # 'name': action.name,
+##            #     'help': action.help,
+##            #     'type': 'ir.actions.act_window',
+##            #     'views': [[list_view_id, 'tree'], [form_view_id, 'form'], [False, 'graph'], [False, 'kanban'],
+##            #               [False, 'calendar'], [False, 'pivot']],
+##            #     'target': action.target,
+##            #     'context': action.context,
+##            #     'res_model': 'account.move',
+##            # }
+##            if len(inv_id) > 1:
+##                result['domain'] = "[('id','in',%s)]" % inv_id.ids
+##            elif len(inv_id) == 1:
+##                result['views'] = [(form_view_id, 'form')]
+##                result['res_id'] = inv_id.ids[0]
+##            else:
+##                result = {'type': 'ir.actions.act_window_close'}
+##            return result
 
     def action_confirm(self):
         check_availability = 0
