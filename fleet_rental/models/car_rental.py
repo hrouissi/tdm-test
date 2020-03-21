@@ -182,7 +182,7 @@ class CarRentalContract(models.Model):
         start_date = datetime.strptime(self.rent_start_date, '%Y-%m-%d').date()
         end_date = datetime.strptime(self.rent_end_date, '%Y-%m-%d').date()
         supplier = self.customer_id
-        inv_data = {
+##        inv_data = {
 ##            'name': supplier.name,
 ##            'ref': supplier.name,
 ##            # 'account_id': supplier.property_account_payable_id.id,
