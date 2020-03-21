@@ -58,6 +58,9 @@ class CarRentalContract(models.Model):
                                  readonly=True,
                                  states={'draft': [('readonly', False)]}
                                  )
+    lead_id = fields.Many2one('crm.lead', string="Opportunite", help="Opportunite",
+                                 readonly=True                                 
+                                 )
     car_brand = fields.Many2one('fleet.vehicle.model.brand', string="Fleet Brand", size=50,
                                 related='vehicle_id.model_id.brand_id', store=True, readonly=True)
     car_color = fields.Char(string="Fleet Color", size=50, related='vehicle_id.color', store=True, copy=False,
