@@ -22,7 +22,7 @@ class CrmLead(models.Model):
     lead_testdrive_ids = fields.One2many('car.rental.contract','lead_id',string='Test Drive')
     testdrive_count = fields.Integer(compute='_compute_testdrive_count', string="Test Drive Count")
 
-    @api.multi
+
     def _compute_task_count(self):
         count = 0
         testdrive_ids = self.env['car.rental.contract'].search([])
