@@ -23,16 +23,27 @@ class CrmLead(models.Model):
     testdrive_count = fields.Integer(compute='_compute_testdrive_count', string="Test Drive Count")
 
 
+    
     def _compute_testdrive_count(self):
-        count = 0
-        testdrive_ids = self.env['car.rental.contract'].search([])
-        for record in self:
-            if record:
-                for testdrive_id in testdrive_ids:
-                    if record.partner_id == testdrive_id.customer_id:
-                        count=count+1 
-                        record.testdrive_count = count
-        return True
+        for lead in self:
+            total = 0
+            for order in lead.testdrive_ids:
+                                  
+
+                    total += 1
+            lead.testdrive_count = total
+           
+##    def _compute_testdrive_count(self):
+##        count = 0
+##        testdrive_ids = self.env['car.rental.contract'].search([])
+##        for record in self:
+##            if record:
+##              testdrive_ids  
+##                for testdrive_id in testdrive_ids:
+##                    if record.partner_id == testdrive_id.customer_id:
+##                        count=count+1 
+##                        record.testdrive_count = count
+##        return True
 
 
     def action_car_testdrive_contract(self):
