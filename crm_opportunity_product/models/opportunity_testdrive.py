@@ -39,7 +39,9 @@ class CrmLead(models.Model):
         action = self.env.ref('fleet_rental.action_car_rental_contract').read()[0]
         action['context'] = {
             'search_default_lead_id': self.id,
-            'search_default_customer_id': self.partner_id.id
+            'search_default_customer_id': self.partner_id.id,
+            'default_lead_id': self.id,
+            'default_customer_id': self.partner_id.id
             
         }
         action['domain'] = [('lead_id', '=', self.id),('customer_id', '=', self.partner_id.id)]
