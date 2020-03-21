@@ -31,6 +31,11 @@ class CarRentalContract(models.Model):
     _inherit = 'mail.thread'
 
 
+    @api.onchange('lead_id')
+    def lead_partner_id(self):
+        if self.lead_id :
+            self.customer_id = self.lead_id.partner_id.id
+            
     @api.onchange('rent_start_date', 'rent_end_date')
     def check_availability(self):
         self.vehicle_id = ''
