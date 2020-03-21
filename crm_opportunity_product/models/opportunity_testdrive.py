@@ -28,10 +28,10 @@ class CrmLead(models.Model):
         testdrive_ids = self.env['car.rental.contract'].search([])
         for record in self:
             if record:
-                for task_id in task_ids:
+                for task_id in testdrive_ids:
                     if record.partner_id == testdrive_ids.customer_id:
                         count=count+1 
-                        record.task_count = count
+                        record.testdrive_count = count
         return True
 
 
