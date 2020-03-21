@@ -47,7 +47,7 @@
 				<button string="New Quotation" name="action_create_quotation" type="object" class="oe_highlight"/>
 			</xpath>
 			<xpath expr ="//div[@name='button_box']" position="inside">  
-                <button class="oe_stat_button" name="%(project.action_car_rental_contract)d" type="action" context="{'search_default_customer_id': partner_id, 'default_customer_id': partner_id}"  icon="fa-tasks">
+                <button class="oe_stat_button" name="%(fleet_rental.action_car_rental_contract)d" type="action" context="{'search_default_customer_id': partner_id, 'default_customer_id': partner_id}"  icon="fa-tasks">
                     <field string="Test Drive" name="testdrive_count"  widget="statinfo"/>
                 </button>	
             </xpath>
