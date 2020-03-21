@@ -1,12 +1,12 @@
 # -*- encoding: utf-8 -*-
 {
-	"name": "CRM Opportunity Product",
+	"name": "CRM Opportunity Product Test Drive",
 	"version": "13.0",
 	"author": "TNC",
 	"website": "http://tnc.agency",
 	"sequence": 1,
 	"depends": [
-		"base",'sale_crm','sale','product'
+		"base",'sale_crm','sale','product','fleet_rental'
 	],
 	"category": "Settings",
 	"complexity": "easy",
