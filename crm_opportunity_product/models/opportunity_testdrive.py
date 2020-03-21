@@ -23,7 +23,7 @@ class CrmLead(models.Model):
     testdrive_count = fields.Integer(compute='_compute_testdrive_count', string="Test Drive Count")
 
 
-    def _compute_task_count(self):
+    def _compute_testdrive_count(self):
         count = 0
         testdrive_ids = self.env['car.rental.contract'].search([])
         for record in self:
