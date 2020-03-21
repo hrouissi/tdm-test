@@ -147,7 +147,7 @@
 
         <record model="ir.ui.view" id="car_contract_tree_view">
             <field name="name">car_contract_tree_view.tree</field>
-            <field name="model">car.testdrive.contract</field>
+            <field name="model">car.rental.contract</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="car_contract_result" decoration-info="state == 'draft'">
