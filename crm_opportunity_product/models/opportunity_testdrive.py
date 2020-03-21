@@ -27,7 +27,7 @@ class CrmLead(models.Model):
     def _compute_testdrive_count(self):
         for lead in self:
             total = 0
-            for order in lead.testdrive_ids:
+            for order in lead.lead_testdrive_ids:
                                   
 
                     total += 1
