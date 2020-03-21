@@ -132,7 +132,7 @@ class CarRentalContract(models.Model):
             raise Warning("Please select the valid end date.")
 
     def set_to_done(self):
-        self.state = 'done
+        self.state = 'done'
 ##        invoice_ids = self.env['account.move'].search([('invoice_origin', '=', self.name)])
 ##        print("self.name",self.name)
 ##        f = 0
