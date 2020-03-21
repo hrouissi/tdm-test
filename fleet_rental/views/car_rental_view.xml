@@ -56,11 +56,9 @@
                                 attrs="{'invisible': [('state', 'not in', ('draft', 'reserved'))]}" class="oe_highlight"/>
                         
                         <button name="force_checking" string="Force Checking"
-                                attrs="{'invisible': ['|',('state','!=','running'),
-                                ('first_invoice_created','=',False)]}" type="object" class="oe_highlight"/>
+                                attrs="{'invisible': ['|',('state','!=','running')]}" type="object" class="oe_highlight"/>
                         <button name="set_to_done" string="Set to Done"
-                                attrs="{'invisible': ['|',('state', '!=', 'running'),
-                                ('first_invoice_created','=',True)]}" type="object" class="oe_highlight"/>
+                                attrs="{'invisible': ['|',('state', '!=', 'running')]}" type="object" class="oe_highlight"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,running,done"/>
                     </header>
                     <sheet>
