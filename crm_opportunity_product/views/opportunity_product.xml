@@ -44,10 +44,16 @@
 		<field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor" />
 		<field name="arch" type="xml">
 			<xpath expr="//button[@class='oe_highlight']" position="replace">
-				<button string="New Quotation" name="action_create_quotation" type="object" class="oe_highlight"/>
+				<button string="Nouveau devis" name="action_create_quotation" type="object" class="oe_highlight"/>
 			</xpath>
+
 			<xpath expr ="//div[@name='button_box']" position="inside">  
-                <button class="oe_stat_button" name="%(fleet_rental.action_car_rental_contract)d" type="action" context="{'search_default_customer_id': partner_id, 'default_customer_id': partner_id,'search_default_lead_id': active_id, 'default_lead_id': active_id}"  icon="fa-car">
+                <button class="oe_stat_button" name="%(action_car_testdrive_contract)d" type="action" attrs="{'invisible': [('type', '=', 'lead')]}">
+                    <field string="Test Drive" name="testdrive_count"  widget="statinfo"/>
+                </button>	
+            </xpath>
+			<xpath expr ="//div[@name='button_box']" position="inside">  
+                <button class="oe_stat_button" name="%(fleet_rental.action_car_rental_contract)d" type="action" attrs="{'invisible': [('type', '=', 'lead')]}">
                     <field string="Test Drive" name="testdrive_count"  widget="statinfo"/>
                 </button>	
             </xpath>
