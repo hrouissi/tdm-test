@@ -72,6 +72,7 @@
                         <group>
                             <separator string="Test Drive Details " colspan="4" />
                             <group>
+							<field name="lead_id" readonly = "True"/>
                                 <field name="customer_id"  string="Customer" attrs="{'readonly': [('state','!=','draft')]}"/>
                                 <field name="rent_start_date" attrs="{'readonly': [('state','!=','draft')]}"/>
                                 <field name="rent_end_date" attrs="{'readonly': [('state','!=','draft')]}"/>
