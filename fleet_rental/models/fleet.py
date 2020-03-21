@@ -28,8 +28,8 @@ class FleetReservedTime(models.Model):
     _description = "Reserved Time"
 
     customer_id = fields.Many2one('res.partner', string='Customer')
-    date_from = fields.Date(string='Reserved Date From')
-    date_to = fields.Date(string='Reserved Date To')
+    date_from = fields.Datetime(string='Reserved Date From')
+    date_to = fields.Datetime(string='Reserved Date To')
     reserved_obj = fields.Many2one('fleet.vehicle')
 
 
