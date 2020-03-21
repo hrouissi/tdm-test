@@ -30,6 +30,7 @@ class CarRentalContract(models.Model):
     _description = 'Fleet Rental Management'
     _inherit = 'mail.thread'
 
+
     @api.onchange('rent_start_date', 'rent_end_date')
     def check_availability(self):
         self.vehicle_id = ''
@@ -53,7 +54,7 @@ class CarRentalContract(models.Model):
     image = fields.Binary(related='vehicle_id.image_128', string="Image of Vehicle")
     reserved_fleet_id = fields.Many2one('rental.fleet.reserved', invisible=True, copy=False)
     name = fields.Char(string="Name", default="Draft Contract", readonly=True, copy=False)
-    customer_id = fields.Many2one('res.partner', required=True, string='Customer', help="Customer")
+     = fields.Many2one('res.partner', required=True, string='Customer', help="Customer")
     vehicle_id = fields.Many2one('fleet.vehicle', string="Vehicle", required=True, help="Vehicle",
                                  readonly=True,
                                  states={'draft': [('readonly', False)]}
@@ -115,6 +116,13 @@ class CarRentalContract(models.Model):
     def action_run(self):
         self.state = 'running'
 
+
+    @api.depends('lead_id')
+    def lead_partner_id(self):
+        if self.lead_id :
+            self.customer_id = self.lead_id.partner_id.id
+        
+                
     @api.depends('checklist_line.checklist_active')
     def check_action_verify(self):
         flag = 0
