@@ -70,7 +70,7 @@
                             </h1>
                         </div>
                         <group>
-                            <separator string="Test Drive Details " colspan="4" />
+                            <separator string="Details du Test Drive  " colspan="4" />
                             <group>
 							<field name="lead_id" readonly = "True"/>
                                 <field name="customer_id"  string="Customer" attrs="{'readonly': [('state','!=','draft')]}"/>
@@ -97,11 +97,11 @@
                                     <group>
                                         <field name="attachment_ids" widget="many2many_binary" class="oe_inline"/>
                                     </group>
-                                    <group>
+                                    <!-- <group>
                                         <field name="damage_cost" attrs="{'invisible': [('state','!=','checking')]}"/>
-                                    </group>
+                                    </group> -->
                                 </group>
-                                <field name="checklist_line">
+<!--                                 <field name="checklist_line">
                                     <tree string="Fleet Checklist Lines" editable="bottom">
                                         <field name="name"/>
                                         <field name="checklist_active"/>
@@ -131,7 +131,7 @@
                                             style="width: 100px !important;height: 40px;"
                                             attrs="{'invisible': [('state', '!=', 'checking')]}"
                                             class="oe_subtotal_footer oe_right oe_highlight"/>
-                                </div>
+                                </div> -->
                             </page>
                         </notebook>
                         <group>
