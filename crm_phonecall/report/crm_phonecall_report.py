@@ -123,7 +123,7 @@ class CrmPhonecallReport(models.Model):
         """
         return from_str
 
-    @api.model_cr
+
     def init(self):
         """Initialize the report."""
         tools.drop_view_if_exists(self._cr, self._table)
