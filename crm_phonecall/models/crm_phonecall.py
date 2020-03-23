@@ -111,7 +111,7 @@ class CrmPhonecall(models.Model):
             self.partner_phone = self.partner_id.phone
             self.partner_mobile = self.partner_id.mobile
 
-    @api.multi
+
     def write(self, values):
         """Override to add case management: open/close dates."""
         if values.get('state'):
