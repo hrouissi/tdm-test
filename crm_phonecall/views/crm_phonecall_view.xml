@@ -198,6 +198,37 @@
             </search>
         </field>
     </record>
+	
+	<record id="view_crm_voip_case_phonecalls_filter" model="ir.ui.view">
+        <field name="name">Recherche Appel telephoniques realises</field>
+        <field name="model">voip.phonecall</field>
+        <field name="arch" type="xml">
+            <search string="Recherche appels realises">
+                <field name="name" string="Appels realises"/>
+                <field name="date"/>
+                <field name="state"/>
+				<field name="partner_id"/>
+                <filter string="My Phonecalls" name="my_phonecalls"
+                        domain="[('user_id', '=', uid)]"/>
+                <filter string="Type" name="phonecall_type"/>
+				
+               
+                <separator/>
+             
+                <group expand="0" string="Group By">
+                    <filter string="Partner" name="partner"
+                            context="{'group_by':'partner_id'}"/>
+                    <filter string="Responsible" name="responsible"
+                            context="{'group_by':'user_id'}"/>
+                    
+                    <filter string="Month" name="month"
+                            context="{'group_by':'date'}" help="Calls Date by Month"/>
+					 <filter string="Client" name="partner_id"
+                            context="{'group_by':'partner_id'}" help="Calls by customer"/>
+                </group>
+            </search>
+        </field>
+    </record>
 
     <record id="crm_case_categ_phone0" model="ir.actions.act_window">
         <field name="name">Phone Calls</field>

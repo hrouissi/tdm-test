@@ -11,7 +11,7 @@
                 <button class="oe_stat_button" type="object"
                     name="button_open_phonecall"
                     icon="fa-phone">
-                    <field string="Calls" name="phonecall_count" widget="statinfo"/>
+                    <field string="Planifiés" name="phonecall_count" widget="statinfo"/>
                 </button>
             </xpath>
         </field>
@@ -25,7 +25,7 @@
                 <button class="oe_stat_button" type="object"
                     name="button_open_realisedphonecall"
                     icon="fa-phone">
-                    <field string="Calls" name="realisedphonecall_count" widget="statinfo"/>
+                    <field string="Réalisés" name="realisedphonecall_count" widget="statinfo"/>
                 </button>
             </button>
         </field>
