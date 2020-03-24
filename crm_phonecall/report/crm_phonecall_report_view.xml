@@ -55,7 +55,7 @@
             <search string="Search">
                 <filter string="Todo" name="todo" domain="[('state','in',('draft','open'))]"
                     help="Phone calls which are in draft and open state"/>
-                <filter string="Held" name="held" domain="[('state','=','done')]"
+<!--                 <filter string="Held" name="held" domain="[('state','=','done')]"
                     help="Phone calls which are in closed state"/>
                 <filter string="Not Held" name="not_held" domain="[('state','=','pending')]"
                     help="Phone calls which are in pending state"/>
@@ -83,7 +83,7 @@
                     <separator/>
                     <filter string="Creation Month" name="creation_month"
                             context="{'group_by':'create_date:month'}" help="Month of call"/>
-                </group>
+                </group> -->
             </search>
         </field>
     </record>
