@@ -199,7 +199,7 @@
         </field>
     </record>
 
-  <!--   <record id="crm_case_categ_phone0" model="ir.actions.act_window">
+    <record id="crm_case_categ_phone0" model="ir.actions.act_window">
         <field name="name">Phone Calls</field>
         <field name="res_model">crm.phonecall</field>
          <field name="view_mode">tree,form,calendar</field>
@@ -231,7 +231,7 @@
 
     <menuitem id="menu_crm_case_phone" name="Phone Calls"
               groups="sales_team.group_sale_salesman"
-              parent="crm.crm_menu_root" sequence="6"/>  -->
+              parent="crm.crm_menu_root" sequence="6"/> 
 
     <record id="crm_case_categ_phone_incoming0" model="ir.actions.act_window">
         <field name="name">Logged Calls</field>
