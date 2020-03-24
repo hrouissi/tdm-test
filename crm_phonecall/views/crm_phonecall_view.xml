@@ -205,7 +205,7 @@
         <field name="arch" type="xml">
             <search string="Recherche appels realises">
                 <field name="name" string="Appels realises"/>
-                <field name="date"/>
+                <field name="call_date"/>
                 <field name="state"/>
 				<field name="partner_id"/>
                 <filter string="My Phonecalls" name="my_phonecalls"
@@ -221,8 +221,7 @@
                     <filter string="Responsible" name="responsible"
                             context="{'group_by':'user_id'}"/>
                     
-                    <filter string="Month" name="month"
-                            context="{'group_by':'date'}" help="Calls Date by Month"/>
+                    
 					 <filter string="Client" name="partner_id"
                             context="{'group_by':'partner_id'}" help="Calls by customer"/>
                 </group>
