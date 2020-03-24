@@ -48,7 +48,7 @@
         <field name="context">{'group_by': ['team_id'], 'measures': ['nbr_cases']}</field>
     </record>
 
-    <record id="view_report_crm_phonecall_filter" model="ir.ui.view">
+  <!--   <record id="view_report_crm_phonecall_filter" model="ir.ui.view">
         <field name="name">crm.phonecall.report.select</field>
         <field name="model">crm.phonecall.report</field>
         <field name="arch" type="xml">
@@ -105,6 +105,6 @@
         name="Phone Calls Analysis"
         groups="sales_team.group_sale_salesman"
         action="crm_phonecall_report_action"
-        parent="crm.crm_menu_report" sequence="15"/>
+        parent="crm.crm_menu_report" sequence="15"/> -->
 
 </odoo>
