@@ -17,7 +17,7 @@
         </p>
         </field>
     </record>
-   <!-- <menuitem id="menu_crm_config_phonecall" name="Phone Calls"
+  <menuitem id="menu_crm_config_phonecall" name="Phone Calls"
               parent="crm.menu_crm_config_lead" sequence="45"/>
     <menuitem id="menu_crm_case_phonecall-act"
               action="crm_phonecall_categ_action" name="Categories"
@@ -51,7 +51,7 @@
             </tree>
         </field>
     </record>
-
+ <!-- 
     <record id="crm_case_phone_form_view" model="ir.ui.view">
         <field name="name">CRM - Phone Call Form</field>
         <field name="model">crm.phonecall</field>
