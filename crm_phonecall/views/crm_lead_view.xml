@@ -16,19 +16,19 @@
             </xpath>
         </field>
     </record>
-   <!--  <record id="crm_case_form_view_oppor_inherit" model="ir.ui.view">
-        <field name="name">Opportunities</field>
+   <record id="crm_case_form_view_oppor_inherit" model="ir.ui.view">
+        <field name="name">Appels effectues</field>
         <field name="model">crm.lead</field>
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
-            <button name="action_schedule_meeting" position="before">
+            <button name="action_schedule_meeting" position="after">
                 <button class="oe_stat_button" type="object"
-                    name="button_open_phonecall"
+                    name="button_open_realisedphonecall"
                     icon="fa-phone">
-                    <field string="Calls" name="phonecall_count" widget="statinfo"/>
+                    <field string="Calls" name="realisedphonecall_count" widget="statinfo"/>
                 </button>
             </button>
         </field>
-    </record> -->
+    </record> 
 
 </odoo>
