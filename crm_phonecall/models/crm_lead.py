@@ -64,7 +64,7 @@ class CrmLead(models.Model):
         action_dict['context'] = safe_eval(
             action_dict.get('context', '{}'))
         action_dict['context'].update({
-            'default_partner_id': self.partner_id.id,,
+            'default_partner_id': self.partner_id.id,
             'search_default_partner_id': self.partner_id.id,
             
             
