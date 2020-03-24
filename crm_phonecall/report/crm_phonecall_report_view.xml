@@ -55,17 +55,17 @@
             <search string="Search">
                 <filter string="Todo" name="todo" filter_domain="[('state','in',('draft','open'))]"
                     help="Phone calls which are in draft and open state"/>
-                 <filter string="Held" name="held" filter_domain="[('state','=','done')]"
+<!--                 <filter string="Held" name="held" domain="[('state','=','done')]"
                     help="Phone calls which are in closed state"/>
-                <filter string="Not Held" name="not_held" filter_domain="[('state','=','pending')]"
+                <filter string="Not Held" name="not_held" domain="[('state','=','pending')]"
                     help="Phone calls which are in pending state"/>
                 <separator/>
                 <filter string="My Sales Team(s)" name="my_sales_team"
-                        context="{'invisible_section': False}" filter_domain="[('team_id.user_id','=',uid)]"
+                        context="{'invisible_section': False}" domain="[('team_id.user_id','=',uid)]"
                         help="Phone calls that are assigned to one of the sale teams I manage" groups="sales_team.group_sale_manager"/>
                 <separator/>
                 <filter string="My Phone Calls" name="my_phone_calls"
-                        help="Phone Calls that are assigned to me" filter_domain="[('user_id','=',uid)]"/>
+                        help="Phone Calls that are assigned to me" domain="[('user_id','=',uid)]"/>
                 <field name="team_id" string="Sales Team" context="{'invisible_section': False}"
                         groups="sales_team.group_sale_manager"/>
                 <field name="user_id" string="Salesperson"/>
@@ -83,7 +83,7 @@
                     <separator/>
                     <filter string="Creation Month" name="creation_month"
                             context="{'group_by':'create_date:month'}" help="Month of call"/>
-                </group>
+                </group> -->
             </search>
         </field>
     </record>
