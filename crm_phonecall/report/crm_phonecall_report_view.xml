@@ -50,14 +50,14 @@
 
 	
 					
-    <record id="view_report_crm_phonecall_filter" model="ir.ui.view">
+<!--     <record id="view_report_crm_phonecall_filter" model="ir.ui.view">
         <field name="name">crm.phonecall.report.select</field>
         <field name="model">crm.phonecall.report</field>
         <field name="arch" type="xml">
             <search string="Search">
                 <filter string="Todo" name="todo" filter_domain="[('state','in',('draft','open'))]"/>
 					
-<!--                 <filter string="Held" name="held" domain="[('state','=','done')]"
+                 <filter string="Held" name="held" domain="[('state','=','done')]"
                     help="Phone calls which are in closed state"/>
                 <filter string="Not Held" name="not_held" domain="[('state','=','pending')]"
                     help="Phone calls which are in pending state"/>
@@ -85,11 +85,11 @@
                     <separator/>
                     <filter string="Creation Month" name="creation_month"
                             context="{'group_by':'create_date:month'}" help="Month of call"/>
-                </group> -->
+                </group> 
             </search>
         </field>
-    </record>
-    <!-- <record id="crm_phonecall_report_action" model="ir.actions.act_window">
+    </record> -->
+    <record id="crm_phonecall_report_action" model="ir.actions.act_window">
         <field name="name">Phone Calls Analysis</field>
         <field name="res_model">crm.phonecall.report</field>
         <field name="view_type">form</field>
@@ -107,6 +107,6 @@
         name="Phone Calls Analysis"
         groups="sales_team.group_sale_salesman"
         action="crm_phonecall_report_action"
-        parent="crm.crm_menu_report" sequence="15"/>  -->
+        parent="crm.crm_menu_report" sequence="15"/> 
 
 </odoo>
