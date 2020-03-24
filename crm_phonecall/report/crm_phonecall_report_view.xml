@@ -48,13 +48,15 @@
         <field name="context">{'group_by': ['team_id'], 'measures': ['nbr_cases']}</field>
     </record>
 
+	
+					
     <record id="view_report_crm_phonecall_filter" model="ir.ui.view">
         <field name="name">crm.phonecall.report.select</field>
         <field name="model">crm.phonecall.report</field>
         <field name="arch" type="xml">
             <search string="Search">
-                <filter string="Todo" name="todo" filter_domain="[('state','in',('draft','open'))]"
-                    help="Phone calls which are in draft and open state"/>
+                <filter string="Todo" name="todo" filter_domain="[('state','in',('draft','open'))]"/>
+					
 <!--                 <filter string="Held" name="held" domain="[('state','=','done')]"
                     help="Phone calls which are in closed state"/>
                 <filter string="Not Held" name="not_held" domain="[('state','=','pending')]"
