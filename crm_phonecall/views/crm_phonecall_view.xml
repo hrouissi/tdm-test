@@ -255,7 +255,7 @@
         </field>
     </record>
 
-   <!--  <record id="action_crm_tag_tree_phone_incoming0" model="ir.actions.act_window.view">
+     <record id="action_crm_tag_tree_phone_incoming0" model="ir.actions.act_window.view">
         <field name="sequence" eval="1"/>
         <field name="view_mode">tree</field>
         <field name="view_id" ref="crm_case_inbound_phone_tree_view"/>
@@ -325,7 +325,7 @@
               name="Scheduled Calls"
               parent="menu_crm_case_phone"
               groups="crm_phonecall.group_scheduled_calls"
-              action="crm_case_categ_phone_outgoing0"/>  -->
+              action="crm_case_categ_phone_outgoing0"/>  
 			 
 
 </odoo>
