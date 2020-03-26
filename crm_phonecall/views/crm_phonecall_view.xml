@@ -27,7 +27,7 @@
         <field name="name">CRM - Phone Calls Tree</field>
         <field name="model">crm.phonecall</field>
         <field name="arch" type="xml">
-            <!-- <tree  colors="gray:state in ('cancel','done');blue:state in ('pending',)" string="Phone Calls"> -->
+            <!-- <tree   colors="gray:state in ('cancel','done');blue:state in ('pending',)" string="Phone Calls"> -->
 			<tree  string="Phone Calls">
                 <field name="date"/>
                 <field name="name"/>
