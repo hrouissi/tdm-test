@@ -20,11 +20,11 @@ class CrmLead(models.Model):
         compute='_compute_phonecall_count',
     )
 
-    realisedphonecall_ids = fields.One2many(
-        comodel_name='voip.phonecall',
-        inverse_name='partner_id',
-        string='Appels effectues',
-    )
+##    realisedphonecall_ids = fields.One2many(
+##        comodel_name='voip.phonecall',
+##        inverse_name='partner_id',
+##        string='Appels effectues',
+##    )
     realisedphonecall_count = fields.Integer(
         compute='_compute_realisedphonecall_count',
     )
