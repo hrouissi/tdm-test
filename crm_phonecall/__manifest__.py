@@ -13,6 +13,7 @@
     "depends": [
         'crm',
         'calendar',
+        'voip'
     ],
     "data": [
         'security/crm_security.xml',
