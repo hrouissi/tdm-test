@@ -8,7 +8,7 @@
     "author": "Odoo S.A., "
               "Tecnativa, "
               "Odoo Community Association (OCA)",
-    "website": "https://www.tecnativa.com",
+    "website": "https://www.tnc.agency",
     "license": "AGPL-3",
     "depends": [
         'crm',
