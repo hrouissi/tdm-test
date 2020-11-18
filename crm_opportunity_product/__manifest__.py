@@ -11,7 +11,7 @@
 	"category": "Settings",
 	"complexity": "easy",
 	"description": """
-	This  module allow to add products on opportunity and create quote with that . 
+	This  module allow to add products on opportunity and create quote with that ! . 
 	""",
 	"data": [
 		'security/ir.model.access.csv',
